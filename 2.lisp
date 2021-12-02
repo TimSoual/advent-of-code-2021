@@ -1010,11 +1010,10 @@ down 1
 forward 5")
 
 
-;(format t INPUT-TEST)
-
 (defun delimiter-newline (c) (char= c #\Linefeed) )
 (defun delimiter-space (c) (char= c #\Space) )
 
+; https://stackoverflow.com/questions/15393797/lisp-splitting-input-into-separate-strings
 (defun my-split (string &key (delimiterp #'delimiterp))
   (loop :for beg = (position-if-not delimiterp string)
     :then (position-if-not delimiterp string :start (1+ end))
@@ -1034,14 +1033,10 @@ forward 5")
       (cond
         ((string= direction "forward") (setf x (+ x distance)))
         ((string= direction "up") (setf z (- z distance)))
-        ((string= direction "down") (setf z (+ z distance)))
-      )
-    )
-  )
+        ((string= direction "down") (setf z (+ z distance))))))
   ;(format t "x: ~d " x)
   ;(format t "z: ~d " z)
-  (format t "answer 1: ~d " (* x z))
-)
+  (format t "answer 1: ~d " (* x z)))
 
 
 
@@ -1053,13 +1048,8 @@ forward 5")
       (cond
         ((string= direction "forward") (setf x (+ x distance)) (setf z (+ z (* aim distance))))
         ((string= direction "up") (setf aim (- aim distance)))
-        ((string= direction "down") (setf aim (+ aim distance)))
-      )
-    )
-  )
+        ((string= direction "down") (setf aim (+ aim distance))))))
   ;(format t "x: ~d " x)
   ;(format t "z: ~d " z)
-  (format t "answer 2: ~d " (* x z))
-)
-
+  (format t "answer 2: ~d " (* x z)))
 
