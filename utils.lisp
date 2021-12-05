@@ -31,3 +31,5 @@
 (defun find-index (value comparator list)
   (dotimes (i (length list))
     (if (funcall comparator (nth i list) value) (return-from find-index i))))
+
+(defun println (message) (format t "~%~a" message))
