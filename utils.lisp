@@ -9,6 +9,7 @@
 (defun delimiter-newline (c) (char= c #\Linefeed) )
 (defun delimiter-space (c) (char= c #\Space) )
 (defun delimiter-comma (c) (char= c #\,) )
+(defun delimiter-pipe (c) (char= c #\|) )
 
 ; my-split does not produce an empty string for 2 delimiters side by side, this does
 (defun my-split-2 (string &key (delimiterp 'delimiterp))
@@ -25,8 +26,7 @@
             (push (subseq cur-string beg end) split-strings)
             (setf cur-string (subseq cur-string (+ end 1)))))
     )
-    (reverse split-strings)
-  ))
+    (reverse split-strings)))
 
 (defun find-index (value comparator list)
   (dotimes (i (length list))
