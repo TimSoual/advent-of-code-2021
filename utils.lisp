@@ -33,3 +33,7 @@
     (if (funcall comparator (nth i list) value) (return-from find-index i))))
 
 (defun println (message) (format t "~%~a" message))
+
+(defun print-hash-table (hashtable  &optional (table-name "hashtable"))
+  (format t "~%--- table-name: ~a~%" table-name)
+  (maphash #'(lambda (k v) (format t "~a => ~a~%" k v)) hashtable))
