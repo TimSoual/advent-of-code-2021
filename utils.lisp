@@ -10,6 +10,7 @@
 (defun delimiter-space (c) (char= c #\Space) )
 (defun delimiter-comma (c) (char= c #\,) )
 (defun delimiter-pipe (c) (char= c #\|) )
+(defun delimiter-dash (c) (char= c #\-) )
 
 ; my-split does not produce an empty string for 2 delimiters side by side, this does
 (defun my-split-2 (string &key (delimiterp 'delimiterp))
